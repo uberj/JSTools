@@ -1,0 +1,64 @@
+* To do:
+- draw quick debugging architecture overview slide
+- plot w3schools statistics
+
+* Talk outline
+
+- Firefox's debugging architecture
+  - slide: Debugger; server; protocol; UI
+
+- Motivation
+  - Mozilla's mission: to promote the Open Web
+    http://www.mozilla.org/en-US/about/manifesto/
+    especially principals 2 and 6
+  - user audience is main source of Mozilla's leverage, but developer audience is also critical
+  - Firebug was major part of Firefox's appeal to developers; no serious competition at the time
+  - Chrome's devtools were better; Firefox began losing developers to Chrome
+    http://www.w3schools.com/browsers/browsers_stats.asp
+    - developer-heavy site
+    - 2008-9: Google Chrome is introduced
+    - 2009-1: Firefox passes Internet Explorer
+    - 2012-3: Chrome passes Firefox
+  - Why were Chrome's developer tools better?
+    - built-in, not an add-on
+    - For JavaScript, Firebug based on JSD, an almost actively hostile API:
+      - could crash browser
+      - disabled JIT (bytecode interpreter)
+      - incomplete: concealed easily available information
+      - what was there wasn't guaranteed
+      - cross-thread support not trustworthy
+      - essentially no test coverage
+      - in summary: neglected, avoided
+  - Spring 2010: Mozilla decides to redesign JS debugging support
+
+- Mozilla's requirements
+  - desktop content
+  - Electrolysis
+  - web workers
+  - chrome debugging (note: "chrome" vs. "Chrome")
+  - Fennec (remote debugging)
+  - now FxOS, as well
+
+- Architecture, again
+  - Debugger: make it possible to write JS that debugs JS
+  - protocol
+    - inter-process
+    - inter-browser
+
+
+inter-thread; inter-machine
+
+
+* Text
+
+In the spring of 2010, Mozilla decided to redesign the debugging support in Firefox's JavaScript engine. While Firebug, a downloadable Firefox extension that provided JavaScript debugging, document inspection, timeline displays of network activity, and other essential tools remained popular with web developers, Google's new web browser, Chrome, was gaining ground rapidly. Mozilla believed that the quality of Chrome's built-in web developer tools was a major reason.
+
+
+
+
+Through 2011, the most popular web browser amongst web developers was Mozilla's Firefox,
+
+Before the rise of Google's Chrome web browser, the main reason for the popularity of Mozilla's Firefox with web developers was Firebug the package as a whole had no serious competition.
+
+
+

@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1052.3622"
+   height="744.09448"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="requirements.svg">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend"
+       style="overflow:visible">
+      <path
+         id="path3785"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend"
+       style="overflow:visible">
+      <path
+         id="path3791"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Send"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Send"
+       style="overflow:visible">
+      <path
+         id="path3797"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.96924806"
+     inkscape:cx="526.18109"
+     inkscape:cy="372.04724"
+     inkscape:document-units="px"
+     inkscape:current-layer="svg2"
+     showgrid="false"
+     inkscape:window-width="1200"
+     inkscape:window-height="1888"
+     inkscape:window-x="1600"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:snap-global="false" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(0,-308.2677)"
+     style="display:inline"
+     inkscape:label="FxOS"
+     id="bg:FxOS"
+     inkscape:groupmode="layer">
+    <rect
+       style="fill:#a4a4a4;fill-opacity:1;stroke:none;display:inline"
+       id="rect5189"
+       width="816.19885"
+       height="263.75482"
+       x="59.27319"
+       y="744.05933"
+       rx="30.443516"
+       ry="30.443516" />
+    <rect
+       style="fill:#a4a4a4;fill-opacity:1;stroke:none;display:inline"
+       id="rect5191"
+       width="816.19885"
+       height="252.40581"
+       x="59.789074"
+       y="466.00876"
+       rx="34.570454"
+       ry="34.570454" />
+    <rect
+       ry="22.189695"
+       rx="22.189695"
+       y="755.63312"
+       x="187.18591"
+       height="238.14827"
+       width="675.89819"
+       id="rect5193"
+       style="fill:#e2e2e2;fill-opacity:1;stroke:none" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text5195"
+       y="969.78479"
+       x="525.90845"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       xml:space="preserve"><tspan
+         y="969.78479"
+         x="525.90845"
+         id="tspan5197"
+         sodipodi:role="line">Firefox OS browser</tspan></text>
+    <rect
+       ry="22.189695"
+       rx="22.189695"
+       y="480.33295"
+       x="188.75504"
+       height="224.54916"
+       width="674.85211"
+       id="rect5199"
+       style="fill:#e2e2e2;fill-opacity:1;stroke:none;display:inline" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text5201"
+       y="525.44916"
+       x="525.51312"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       xml:space="preserve"><tspan
+         y="525.44916"
+         x="525.51312"
+         id="tspan5203"
+         sodipodi:role="line">Firefox</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text5205"
+       y="742.72083"
+       x="424.71072"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       xml:space="preserve"><tspan
+         style="font-size:32px"
+         y="742.72083"
+         x="424.71072"
+         id="tspan5207"
+         sodipodi:role="line">ADB</tspan></text>
+    <text
+       transform="matrix(0,-1,1,0,0,0)"
+       sodipodi:linespacing="125%"
+       id="text5209"
+       y="113.51211"
+       x="-593.04932"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       xml:space="preserve"><tspan
+         y="113.51211"
+         x="-593.04932"
+         id="tspan5211"
+         sodipodi:role="line">Development</tspan><tspan
+         id="tspan5213"
+         y="158.51212"
+         x="-593.04932"
+         sodipodi:role="line">machine</tspan></text>
+    <text
+       transform="matrix(0,-1,1,0,0,0)"
+       sodipodi:linespacing="125%"
+       id="text5215"
+       y="112.11105"
+       x="-877.29028"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       xml:space="preserve"><tspan
+         id="tspan5217"
+         y="112.11105"
+         x="-877.29028"
+         sodipodi:role="line">Firefox OS</tspan><tspan
+         id="tspan5219"
+         y="157.11105"
+         x="-877.29028"
+         sodipodi:role="line">device</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="bg:workers"
+     inkscape:label="web workers"
+     style="display:none"
+     transform="translate(0,-308.2677)">
+    <rect
+       style="fill:#a4a4a4;fill-opacity:1;stroke:none;display:inline"
+       id="rect5106"
+       width="825.48438"
+       height="559.86066"
+       x="62.884274"
+       y="457.23907"
+       rx="36.633884"
+       ry="36.633884" />
+    <rect
+       style="fill:#e2e2e2;fill-opacity:1;stroke:none;display:inline"
+       id="rect5114"
+       width="674.85211"
+       height="516.52808"
+       x="188.75504"
+       y="480.33295"
+       rx="22.189695"
+       ry="22.189695" />
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       x="525.90845"
+       y="969.78479"
+       id="text5110"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5112"
+         x="525.90845"
+         y="969.78479">Debuggee Firefox</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       x="525.51312"
+       y="525.44916"
+       id="text5116"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5118"
+         x="525.51312"
+         y="525.44916">Firefox</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       x="487.64612"
+       y="737.56219"
+       id="text5120"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5122"
+         x="487.64612"
+         y="737.56219"
+         style="font-size:32px">postMessage              (private)</tspan></text>
+    <text
+       transform="matrix(0,-1,1,0,0,0)"
+       sodipodi:linespacing="125%"
+       id="text5124"
+       y="136.87808"
+       x="-730.61523"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       xml:space="preserve"><tspan
+         y="136.87808"
+         x="-730.61523"
+         id="tspan5126"
+         sodipodi:role="line">Development machine</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       x="512.76862"
+       y="421.16373"
+       id="text5128"
+       sodipodi:linespacing="125%"
+       transform="translate(0,308.2677)"><tspan
+         sodipodi:role="line"
+         id="tspan5130"
+         x="517.7608"
+         y="421.16373"> </tspan></text>
+  </g>
+  <g
+     transform="translate(0,-308.2677)"
+     style="display:none"
+     inkscape:label="chrome"
+     id="bg:chrome"
+     inkscape:groupmode="layer">
+    <rect
+       ry="36.633884"
+       rx="36.633884"
+       y="457.23907"
+       x="62.884274"
+       height="559.86066"
+       width="825.48438"
+       id="rect4978-2"
+       style="fill:#a4a4a4;fill-opacity:1;stroke:none;display:inline" />
+    <rect
+       ry="22.189695"
+       rx="22.189695"
+       y="755.63312"
+       x="187.18591"
+       height="238.14827"
+       width="675.89819"
+       id="rect4972"
+       style="fill:#e2e2e2;fill-opacity:1;stroke:none" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text4974"
+       y="969.78479"
+       x="525.90845"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       xml:space="preserve"><tspan
+         y="969.78479"
+         x="525.90845"
+         id="tspan4976"
+         sodipodi:role="line">Debuggee Firefox</tspan></text>
+    <rect
+       ry="22.189695"
+       rx="22.189695"
+       y="480.33295"
+       x="188.75504"
+       height="224.54916"
+       width="674.85211"
+       id="rect4978"
+       style="fill:#e2e2e2;fill-opacity:1;stroke:none;display:inline" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text4980"
+       y="525.44916"
+       x="525.51312"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       xml:space="preserve"><tspan
+         y="525.44916"
+         x="525.51312"
+         id="tspan4982"
+         sodipodi:role="line">Debugger Firefox</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text4984"
+       y="742.72083"
+       x="424.71072"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       xml:space="preserve"><tspan
+         style="font-size:32px"
+         y="742.72083"
+         x="424.71072"
+         id="tspan4986"
+         sodipodi:role="line">TCP</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       x="-730.61523"
+       y="136.87808"
+       id="text5006"
+       sodipodi:linespacing="125%"
+       transform="matrix(0,-1,1,0,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan5008"
+         x="-730.61523"
+         y="136.87808">Development machine</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="bg:desktop"
+     inkscape:label="Desktop"
+     style="display:none">
+    <rect
+       style="fill:#e2e2e2;fill-opacity:1;stroke:none;display:inline"
+       id="rect4790-14"
+       width="675.89819"
+       height="503.30228"
+       x="188.23199"
+       y="146.29872"
+       rx="22.189695"
+       ry="22.189695" />
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       x="525.02094"
+       y="201.40575"
+       id="text4921"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4923"
+         x="525.02094"
+         y="201.40575">Desktop Firefox process</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       x="491.10236"
+       y="430.44931"
+       id="text4929"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4931"
+         x="491.10236"
+         y="430.44931">just hand over              the JSON</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       x="518.26318"
+       y="588.32324"
+       id="text4888"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="518.26318"
+         y="588.32324"
+         id="tspan4892">debuggee (web content)</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="bg:fennec"
+     inkscape:label="Fennec"
+     style="display:none"
+     transform="translate(0,-308.2677)">
+    <rect
+       ry="30.443516"
+       rx="30.443516"
+       y="744.05933"
+       x="59.27319"
+       height="263.75482"
+       width="816.19885"
+       id="rect4978-2-9-2"
+       style="fill:#a4a4a4;fill-opacity:1;stroke:none;display:inline" />
+    <rect
+       ry="34.570454"
+       rx="34.570454"
+       y="466.00876"
+       x="59.789074"
+       height="252.40581"
+       width="816.19885"
+       id="rect4978-2-9"
+       style="fill:#a4a4a4;fill-opacity:1;stroke:none;display:inline" />
+    <rect
+       style="fill:#e2e2e2;fill-opacity:1;stroke:none"
+       id="rect4790"
+       width="675.89819"
+       height="238.14827"
+       x="187.18591"
+       y="755.63312"
+       rx="22.189695"
+       ry="22.189695" />
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       x="525.90845"
+       y="969.78479"
+       id="text4794"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4796"
+         x="525.90845"
+         y="969.78479">Fennec (mobile Firefox)</tspan></text>
+    <rect
+       style="fill:#e2e2e2;fill-opacity:1;stroke:none;display:inline"
+       id="rect4790-1"
+       width="674.85211"
+       height="224.54916"
+       x="188.75504"
+       y="480.33295"
+       rx="22.189695"
+       ry="22.189695" />
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       x="525.51312"
+       y="525.44916"
+       id="text4794-9"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4796-4"
+         x="525.51312"
+         y="525.44916">Firefox</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       x="424.71072"
+       y="742.72083"
+       id="text4898"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4900"
+         x="424.71072"
+         y="742.72083"
+         style="font-size:32px">ADB</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       x="-593.04932"
+       y="113.51211"
+       id="text5006-2"
+       sodipodi:linespacing="125%"
+       transform="matrix(0,-1,1,0,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan5008-5"
+         x="-593.04932"
+         y="113.51211">Development</tspan><tspan
+         sodipodi:role="line"
+         x="-593.04932"
+         y="158.51212"
+         id="tspan5056">machine</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       x="-877.29028"
+       y="112.11105"
+       id="text5006-2-8"
+       sodipodi:linespacing="125%"
+       transform="matrix(0,-1,1,0,0,0)"><tspan
+         sodipodi:role="line"
+         x="-877.29028"
+         y="112.11105"
+         id="tspan5056-2">Android</tspan><tspan
+         sodipodi:role="line"
+         x="-877.29028"
+         y="157.11105"
+         id="tspan5102">device</tspan></text>
+  </g>
+  <g
+     inkscape:label="Common"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-308.2677)"
+     style="display:inline"
+     sodipodi:insensitive="true">
+    <rect
+       style="fill:#ff6c60;fill-opacity:1;stroke:#000000;stroke-width:2.5;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect3004"
+       width="605.90552"
+       height="139.76338"
+       x="223.22833"
+       y="547.18738"
+       rx="5.5990539"
+       ry="5.5990524" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:10, 5;stroke-dashoffset:0;marker-end:url(#Arrow1Send)"
+       d="m 482.37948,689.56064 c -31.13954,78.48813 104.67195,-6.60407 70.21453,74.84268"
+       id="path3776"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <rect
+       style="fill:#ff6c60;fill-opacity:1;stroke:#000000;stroke-width:2.5;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect4782"
+       width="609.98419"
+       height="41.832859"
+       x="220.14291"
+       y="772.1803"
+       rx="5.5990534"
+       ry="5.5990524" />
+    <rect
+       style="fill:#60baff;fill-opacity:1;stroke:#000000;stroke-width:2.5;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect4786"
+       width="610.85059"
+       height="70.679459"
+       x="219.70972"
+       y="852.13721"
+       rx="5.5990534"
+       ry="5.5990529" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:4.99999952;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:14.99999938, 4.9999998;stroke-dashoffset:0"
+       d="m 221.3684,832.88494 607.5332,0"
+       id="path4788"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:9, 3;stroke-dashoffset:0"
+       d="m 225.09596,638.11225 602.17027,0.36985"
+       id="path4788-3"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       x="526.64984"
+       y="601.49927"
+       id="text4870"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="526.64984"
+         y="601.49927"
+         id="tspan4878">JavaScript debugger user interface</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       x="525.18109"
+       y="671.58704"
+       id="text4880"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4882"
+         x="525.18109"
+         y="671.58704">protocol client library</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       x="524.13501"
+       y="801.37018"
+       id="text4884"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4886"
+         x="524.13501"
+         y="801.37018">protocol server library</tspan></text>
+  </g>
+  <g
+     style="display:inline"
+     inkscape:label="text: FxOS"
+     id="text:FxOS"
+     inkscape:groupmode="layer">
+    <text
+       sodipodi:linespacing="125%"
+       id="text5183"
+       y="587.48267"
+       x="525.47095"
+       style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       xml:space="preserve"><tspan
+         id="tspan5185"
+         y="587.48267"
+         x="525.47095"
+         sodipodi:role="line">debuggee (mobile web content)</tspan></text>
+  </g>
+  <g
+     style="display:none"
+     inkscape:label="text: chrome"
+     id="text:chrome"
+     inkscape:groupmode="layer">
+    <text
+       sodipodi:linespacing="125%"
+       id="text5177"
+       y="587.48267"
+       x="525.47095"
+       style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       xml:space="preserve"><tspan
+         id="tspan5179"
+         y="587.48267"
+         x="525.47095"
+         sodipodi:role="line">debuggee (chrome JS)</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="text:desktop"
+     inkscape:label="text: Desktop"
+     style="display:none">
+    <text
+       xml:space="preserve"
+       style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       x="525.47095"
+       y="587.48267"
+       id="text4888-4"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="525.47095"
+         y="587.48267"
+         id="tspan4892-8">debuggee (web content)</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="text:fennec"
+     inkscape:label="text: Fennec"
+     style="display:none">
+    <text
+       xml:space="preserve"
+       style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       x="525.47095"
+       y="587.48267"
+       id="text5171"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="525.47095"
+         y="587.48267"
+         id="tspan5173">debuggee (mobile web content)</tspan></text>
+  </g>
+</svg>

@@ -1,0 +1,32 @@
+<head>
+  <title>Playing with Google Chrome</title>
+</head>
+<body id='body'>
+  <script type="text/javascript" src='debugme.js'></script>
+
+  <form id="ff">
+    The <input id='argument' type='text' value='1'></input>'th fibonacci number
+    <input id='fibbutton' type='button' value='Calculate' onclick='update()'/>
+    is <b id='result'></b>
+  </form>
+
+  <br>
+
+  The JavaScript expression
+  <br><textarea id='expression' cols=80 rows=10 value='42'></textarea>
+  <br>
+    <form id='ef'>
+      <input id='eb' type='button' value='Evaluate'
+             onclick='f = function(s) { return eval(s); }; updateExpression()'/>
+    </form>
+  <br>evaluates to
+  <br><pre id='value'>unset</pre>
+  <br><input type='button' value='Little Bobby Tables' onclick='"}); lalala; ({valueOf: function(){return
+        eval}"'/>
+
+  <script id='prep'>
+    update();
+    updateExpression();
+  </script>
+  <embed id='req' src="requirements.svg" type="image/svg+xml">
+</body>
