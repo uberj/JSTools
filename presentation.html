@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en-US">
 <head>
-	<title>Shower Presentation Template</title>
+	<title>Firefox's Debugging Architecture</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=1274, user-scalable=no">
 	<link rel="stylesheet" href="shower/themes/mozilla/styles/style.css">
@@ -10,23 +10,27 @@
 		use slide ID to get needed elements
 		-->
 	<style>
-		#Cover h2 {
-			color:#FFF;
-			text-align:center;
-			font-size:40px;
-			}
+                .slide header {
+                        margin: 0 0;
+                }
+                #Cover section {
+                        background:url(shower/themes/mozilla/images/bg-darkgrey-2.png)
+                }
 		#FitToWidth h2,
 		#FitToHeight h2 {
 			color:#fff;
 			text-align:center;
-			}
+		}
+                .slide object {
+                        margin-left: 100px;
+                }
 	</style>
-        <script src="layers.js"></script>
+        <script src="flip.js" type="application/javascript;version=1.7"></script>
 </head>
 <body class="list">
 	<header class="caption">
-		<h1>Your presentation title</h1>
-		<p>Your name, your contact details</p>
+		<h1>Firefox's Debugging Architecture</h1>
+		<p>Jim Blandy &lt;jimb@mozilla.com&gt;</p>
 	</header>
 
 <!-- 
@@ -41,13 +45,14 @@
 	screen resized to height. Add a "w" class to resize to width.
 
  -->
-	<div class="slide cover" id="Cover"><div>
+	<div class="slide" id="Cover"><div>
 		<section>
 			<header>
-				<h2>Presentation title</h2>
+				<h2>Firefox's Debugging Architecture</h2>
 			</header>
-			<img src="shower/themes/mozilla/images/Fx-logo.png" alt="">
-			<footer class="byline">Firstname, Lastname, Conference, Location, date</footer>
+			<img src="shower/themes/mozilla/images/Fx-logo.png"
+                             width="40%" alt="">
+			<footer class="byline">Jim Blandy &mdash; JSTools 2013 &mdash; Montpellier</footer>
 		</section>
 	</div></div>
 
@@ -56,10 +61,17 @@
 			<header style="margin-bottom:10px;">
 				<h2>Debugging Requirements</h2>
 			</header>
+		</section>
+	</div></div>
+
+	<div class="slide"><div>
+		<section>
+			<header style="margin-bottom:10px;">
+				<h2>Common Architecture</h2>
+			</header>
                         <div>
-                          <object id="req:fennec" data="requirements.svg" type="image/svg+xml"
-                                  style="margin-left: 100px"
-                                  onload="showLayers('req', 'fennec')">
+                          <object data="requirements.svg" type="image/svg+xml"
+                                  flipClass="common">
                           </object>
                         </div>
 
@@ -69,12 +81,11 @@
 	<div class="slide"><div>
 		<section>
 			<header style="margin-bottom:10px;">
-				<h2>Debugging Requirements</h2>
+				<h2>Fennec (Firefox for Android)</h2>
 			</header>
                         <div>
-                          <object id="req:desktop" data="requirements.svg" type="image/svg+xml"
-                                  style="margin-left: 100px"
-                                  onload="showLayers('req', 'desktop')">
+                          <object data="requirements.svg" type="image/svg+xml"
+                                  flipClass="fennec">
                           </object>
                         </div>
 
@@ -84,12 +95,11 @@
 	<div class="slide"><div>
 		<section>
 			<header style="margin-bottom:10px;">
-				<h2>Debugging Requirements</h2>
+				<h2>Desktop Content</h2>
 			</header>
                         <div>
-                          <object id="req:chrome" data="requirements.svg" type="image/svg+xml"
-                                  style="margin-left: 100px"
-                                  onload="showLayers('req', 'chrome')">
+                          <object data="requirements.svg" type="image/svg+xml"
+                                  flipClass="desktop">
                           </object>
                         </div>
 
@@ -99,12 +109,11 @@
 	<div class="slide"><div>
 		<section>
 			<header style="margin-bottom:10px;">
-				<h2>Debugging Requirements</h2>
+				<h2>Firefox's Own Chrome</h2>
 			</header>
                         <div>
-                          <object id="req:workers" data="requirements.svg" type="image/svg+xml"
-                                  style="margin-left: 100px"
-                                  onload="showLayers('req', 'workers')">
+                          <object data="requirements.svg" type="image/svg+xml"
+                                  flipClass="chrome">
                           </object>
                         </div>
 
@@ -114,24 +123,50 @@
 	<div class="slide"><div>
 		<section>
 			<header style="margin-bottom:10px;">
-				<h2>Debugging Requirements</h2>
+				<h2>Web Workers</h2>
 			</header>
                         <div>
-                          <object id="req:FxOS" data="requirements.svg" type="image/svg+xml"
-                                  style="margin-left: 100px"
-                                  onload="showLayers('req', 'FxOS')">
+                          <object data="requirements.svg" type="image/svg+xml"
+                                  flipClass="workers">
                           </object>
                         </div>
 
 		</section>
 	</div></div>
 
-	<div class="slide" id="TwoLinesHeader"><div>
+	<div class="slide"><div>
+		<section>
+			<header style="margin-bottom:10px;">
+				<h2>Firefox OS</h2>
+			</header>
+                        <div>
+                          <object data="requirements.svg" type="image/svg+xml"
+                                  flipClass="FxOS">
+                          </object>
+                        </div>
+
+		</section>
+	</div></div>
+
+	<div class="slide"<div>
 		<section>
 			<header>
-				<h2>Two rows.<br>Mighty heading</h2>
+				<h2>Debugger API: a pristine JS world</h2>
 			</header>
-			<p>This <code>&lt;tool&gt;</code> is provided <strong>without</strong> warranty, guarantee, or much in the way of explanation. Note that use of this tool may or may not crash <em>your</em> browser.</p>
+                        <object data="debugger.svg" type="image/svg+xml"
+                                flipIds="global">
+                        </object>
+		</section>
+	</div></div>
+
+	<div class="slide"<div>
+		<section>
+			<header>
+				<h2>Debugger API: some code</h2>
+			</header>
+                        <object data="debugger.svg" type="image/svg+xml"
+                                flipIds="global,code">
+                        </object>
 		</section>
 	</div></div>
 

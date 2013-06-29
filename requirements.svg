@@ -68,9 +68,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.96924806"
-     inkscape:cx="346.66048"
-     inkscape:cy="372.04724"
+     inkscape:zoom="1.7288136"
+     inkscape:cx="295"
+     inkscape:cy="200"
      inkscape:document-units="px"
      inkscape:current-layer="svg2"
      showgrid="false"
@@ -224,9 +224,9 @@
     <rect
        style="fill:#e2e2e2;fill-opacity:1;stroke:none;display:inline"
        id="rect5114"
-       width="455.09927"
+       width="503.13846"
        height="347.99982"
-       x="88.552292"
+       x="40.513077"
        y="623.49921"
        rx="22.189695"
        ry="22.189695" />
@@ -234,14 +234,14 @@
        xml:space="preserve"
        style="font-size:24.2657547px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
        x="315.76813"
-       y="953.70978"
+       y="960.57581"
        id="text5110"
        sodipodi:linespacing="125%"
        transform="scale(1.000475,0.99952522)"><tspan
          sodipodi:role="line"
          id="tspan5112"
          x="315.76813"
-         y="953.70978">Debuggee Firefox</tspan></text>
+         y="960.57581">Debuggee Firefox</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:24.2657547px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
@@ -258,24 +258,24 @@
        xml:space="preserve"
        style="font-size:24.2657547px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
        x="289.97742"
-       y="797.18042"
+       y="789.33356"
        id="text5120"
        sodipodi:linespacing="125%"
        transform="scale(1.000475,0.99952522)"><tspan
          sodipodi:role="line"
          id="tspan5122"
          x="289.97742"
-         y="797.18042"
+         y="789.33356"
          style="font-size:21.569561px">postMessage              (private)</tspan></text>
     <text
        transform="matrix(0,-0.99952522,1.000475,0,0,0)"
        sodipodi:linespacing="125%"
        id="text5124"
-       y="53.542625"
+       y="30.024385"
        x="-792.4978"
        style="font-size:24.2657547px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
        xml:space="preserve"><tspan
-         y="53.542625"
+         y="30.024385"
          x="-792.4978"
          id="tspan5126"
          sodipodi:role="line">Development machine</tspan></text>
@@ -291,6 +291,31 @@
          id="tspan5130"
          x="306.91125"
          y="791.69989" /></text>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="rect3249"
+       width="492.15686"
+       height="132.35294"
+       x="45.098038"
+       y="803.22632"
+       rx="13.242472"
+       ry="13.242472" />
+    <text
+       xml:space="preserve"
+       style="font-size:26.60680962px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       x="-869.14948"
+       y="71.267448"
+       id="text4053"
+       sodipodi:linespacing="100%"
+       transform="matrix(0,-1,1,0,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan4055"
+         x="-869.14948"
+         y="71.267448">worker</tspan><tspan
+         sodipodi:role="line"
+         x="-869.14948"
+         y="97.87426"
+         id="tspan4057">thread</tspan></text>
   </g>
   <g
      transform="translate(0,-635.24114)"
@@ -669,6 +694,52 @@
          y="595.39288"
          x="315.47327"
          sodipodi:role="line">debuggee (mobile web content)</tspan></text>
+  </g>
+  <g
+     style="display:inline"
+     inkscape:label="text: common"
+     id="g3097"
+     inkscape:groupmode="layer"
+     transform="translate(0,-326.97344)"
+     class="flip common">
+    <text
+       sodipodi:linespacing="125%"
+       id="text3099"
+       y="595.39288"
+       x="315.47327"
+       style="font-size:21.569561px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       xml:space="preserve"
+       transform="scale(1.000475,0.99952522)"><tspan
+         id="tspan3101"
+         y="595.39288"
+         x="315.47327"
+         sodipodi:role="line">debuggee</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:22.80583763px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:100%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       x="103.89887"
+       y="548.88013"
+       id="text3109"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan3111"
+         x="103.89887"
+         y="548.88013">Debugger</tspan><tspan
+         sodipodi:role="line"
+         x="103.89887"
+         y="571.68597"
+         id="tspan3113">API</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:22.80583763px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       x="104.90195"
+       y="489.07623"
+       id="text3115"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan3117"
+         x="104.90195"
+         y="489.07623">Remote protocol</tspan></text>
   </g>
   <g
      class="flip workers"

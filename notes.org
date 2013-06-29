@@ -33,11 +33,12 @@
 
 - Mozilla's requirements
   - desktop content
-  - Electrolysis
   - web workers
   - chrome debugging (note: "chrome" vs. "Chrome")
   - Fennec (remote debugging)
   - now FxOS, as well
+
+  - Electrolysis
 
 - Architecture, again
   - Debugger: make it possible to write JS that debugs JS
