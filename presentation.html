@@ -12,6 +12,7 @@
 	<style>
                 .slide header {
                         margin: 0 0;
+                        margin-bottom: 10px;
                 }
                 #Cover section {
                         background:url(shower/themes/mozilla/images/bg-darkgrey-2.png)
@@ -58,7 +59,7 @@
 
 	<div class="slide"><div>
 		<section>
-			<header style="margin-bottom:10px;">
+			<header>
 				<h2>Debugging Requirements</h2>
 			</header>
 		</section>
@@ -66,7 +67,7 @@
 
 	<div class="slide"><div>
 		<section>
-			<header style="margin-bottom:10px;">
+			<header>
 				<h2>Common Architecture</h2>
 			</header>
                         <div>
@@ -80,7 +81,7 @@
 
 	<div class="slide"><div>
 		<section>
-			<header style="margin-bottom:10px;">
+			<header>
 				<h2>Fennec (Firefox for Android)</h2>
 			</header>
                         <div>
@@ -94,7 +95,7 @@
 
 	<div class="slide"><div>
 		<section>
-			<header style="margin-bottom:10px;">
+			<header>
 				<h2>Desktop Content</h2>
 			</header>
                         <div>
@@ -108,7 +109,7 @@
 
 	<div class="slide"><div>
 		<section>
-			<header style="margin-bottom:10px;">
+			<header>
 				<h2>Firefox's Own Chrome</h2>
 			</header>
                         <div>
@@ -122,7 +123,7 @@
 
 	<div class="slide"><div>
 		<section>
-			<header style="margin-bottom:10px;">
+			<header>
 				<h2>Web Workers</h2>
 			</header>
                         <div>
@@ -136,7 +137,7 @@
 
 	<div class="slide"><div>
 		<section>
-			<header style="margin-bottom:10px;">
+			<header>
 				<h2>Firefox OS</h2>
 			</header>
                         <div>
@@ -148,24 +149,149 @@
 		</section>
 	</div></div>
 
-	<div class="slide"<div>
+	<div class="slide"><div>
 		<section>
 			<header>
 				<h2>Debugger API: a pristine JS world</h2>
 			</header>
-                        <object data="debugger.svg" type="image/svg+xml"
-                                flipIds="global">
-                        </object>
+                        <div>
+                          <object data="debugger.svg" type="image/svg+xml"
+                                  flipIds="global">
+                          </object>
+                        </div>
 		</section>
 	</div></div>
 
-	<div class="slide"<div>
+	<div class="slide"><div>
 		<section>
 			<header>
 				<h2>Debugger API: some code</h2>
 			</header>
                         <object data="debugger.svg" type="image/svg+xml"
                                 flipIds="global,code">
+                        </object>
+		</section>
+	</div></div>
+
+	<div class="slide"><div>
+		<section>
+			<header>
+				<h2>Debugger API: compile to 'scripts'</h2>
+			</header>
+                        <object data="debugger.svg" type="image/svg+xml"
+                                flipIds="global,code,scripts">
+                        </object>
+		</section>
+	</div></div>
+
+	<div class="slide"><div>
+		<section>
+			<header>
+				<h2>Debugger API: create a function</h2>
+			</header>
+                        <object data="debugger.svg" type="image/svg+xml"
+                                flipIds="global,code,scripts,alertLater">
+                        </object>
+		</section>
+	</div></div>
+
+	<div class="slide"><div>
+		<section>
+			<header>
+				<h2>Debugger API: eval a call</h2>
+			</header>
+                        <object data="debugger.svg" type="image/svg+xml"
+                                flipIds="global,code,scripts,alertLater,eval1">
+                        </object>
+		</section>
+	</div></div>
+
+	<div class="slide"><div>
+		<section>
+			<header>
+				<h2>Debugger API: in alertLater</h2>
+			</header>
+                        <object data="debugger.svg" type="image/svg+xml"
+                                flipIds="global,code,scripts,alertLater,eval1,call1,call1env">
+                        </object>
+		</section>
+	</div></div>
+
+	<div class="slide"><div>
+		<section>
+			<header>
+				<h2>Debugger API: anonymous function</h2>
+			</header>
+                        <object data="debugger.svg" type="image/svg+xml"
+                                flipIds="global,code,scripts,alertLater,eval1,call1,call1env,anon">
+                        </object>
+		</section>
+	</div></div>
+
+	<div class="slide"><div>
+		<section>
+			<header>
+				<h2>Debugger API: set timeout</h2>
+			</header>
+                        <object data="debugger.svg" type="image/svg+xml"
+                                flipIds="global,code,scripts,alertLater,eval1,call1,call1env,anon,eventloop">
+                        </object>
+		</section>
+	</div></div>
+
+	<div class="slide"><div>
+		<section>
+			<header>
+				<h2>Debugger API: call returns</h2>
+			</header>
+                        <object data="debugger.svg" type="image/svg+xml"
+                                flipIds="global,code,scripts,alertLater,eval1,call1env,anon,eventloop">
+                        </object>
+		</section>
+	</div></div>
+
+	<div class="slide"><div>
+		<section>
+			<header>
+				<h2>Debugger API: eval returns</h2>
+			</header>
+                        <object data="debugger.svg" type="image/svg+xml"
+                                flipIds="global,code,scripts,alertLater,call1env,anon,eventloop">
+                        </object>
+		</section>
+	</div></div>
+
+	<div class="slide"><div>
+		<section>
+			<header>
+				<h2>Debugger API: timeout fires</h2>
+			</header>
+                        <object data="debugger.svg" type="image/svg+xml"
+                                flipIds="global,code,scripts,alertLater,call1env,anon,fire">
+                        </object>
+		</section>
+	</div></div>
+
+	<div class="slide"><div>
+		<section>
+			<header>
+				<h2>Debugger API: call alert</h2>
+			</header>
+                        <object data="debugger.svg" type="image/svg+xml"
+                                flipIds="global,code,scripts,alertLater,call1env,anon,fire,call2">
+                        </object>
+		</section>
+	</div></div>
+
+	<div class="slide"><div>
+		<section>
+			<header>
+				<h2>Debugger API: non-values</h2>
+			</header>
+                        <object data="debugger.svg" type="image/svg+xml"
+                                flipIds="global,code,scripts,alertLater,call1env,anon,fire,call2"
+                                flipStyleClass="nonvalue"
+                                flipStyle="fill:#c7c7c7;fill-opacity:1;stroke:none;display:inline">
                         </object>
 		</section>
 	</div></div>

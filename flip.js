@@ -18,23 +18,37 @@ window.flip = {};
   //
   // Display 'flip' elements only if they have one of the named ids:
   //   <object data="foo.svg" type="image/svg+xml" flipIds='a b c'>
+  //
+  // Change the style of all elements with class 'gray' to 'fill:#808080':
+  //   <object data="foo.svg" type="image/svg+xml"
+  //           flipStyle='fill:#808080' flipStyleClass='gray'>
   function scan() {
     for (let object of iter(document.getElementsByTagName('object'))) {
       var flipClassAttr = object.getAttribute('flipClass');
-      if (flipClassAttr)
-        flipClass(object.contentDocument, flipClassAttr);
-
       var flipIdsAttr = object.getAttribute('flipIds');
-      if (flipIdsAttr)
-        flipIds(object.contentDocument, new Set(flipIdsAttr.split(/[, ]/)));
+      var flipStyleAttr = object.getAttribute('flipStyle');
+      var svgDoc = object.contentDocument;
+
+      if (svgDoc && (flipClassAttr || flipIdsAttr || flipStyleAttr)) {
+        clean(svgDoc);
+
+        if (flipClassAttr)
+          flipClass(svgDoc, flipClassAttr);
+
+        if (flipIdsAttr)
+          flipIds(svgDoc, new Set(flipIdsAttr.split(/[, ]/)));
+
+        if (flipStyleAttr) {
+          var flipStyleClassAttr = object.getAttribute('flipStyleClass');
+          flipStyle(svgDoc, flipStyleClassAttr, flipStyleAttr);
+        }
+      }
     }
   }
 
   // In svgDoc, display elements with the 'flip' class only if they also
   // have showClass.
   function flipClass(svgDoc, showClass) {
-    clean(svgDoc);
-
     for (let elt of iter(svgDoc.getElementsByClassName('flip'))) {
       if (elt.classList.contains(showClass))
         elt.setAttribute('style', 'display:inline');
@@ -46,16 +60,19 @@ window.flip = {};
   // In svgDoc, display elements with the 'flip' class only if their id is
   // in idSet.
   function flipIds(svgDoc, idSet) {
-    console.log("JIMB: flipIds: " + [uneval(id) for (id of idSet)]);
-    clean(svgDoc);
-
     for (let elt of iter(svgDoc.getElementsByClassName('flip'))) {
-      console.log("JIMB: flipIds: elt: " + uneval(elt.id) + ", " + idSet.has(elt.id));
       if (idSet.has(elt.id))
         elt.setAttribute('style', 'display:inline');
       else
         elt.setAttribute('style', 'display:none');
     }
+  }
+
+  // In svgDoc, change the 'style' attribute of all elements with the given
+  // class to the given value.
+  function flipStyle(svgDoc, eltClass, value) {
+    for (let elt of iter(svgDoc.getElementsByClassName(eltClass)))
+      elt.setAttribute('style', value);
   }
 
   // For all Inkscape layers in svgDoc, remove 'display:none' style if
