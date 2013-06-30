@@ -2,7 +2,7 @@ Cu.import("resource://gre/modules/jsdebugger.jsm");
 addDebuggerToGlobal(window);
 
 function demoCleanup(f) { demoCleanup.ups.push(f); }
-// demoCleanup.ups = [];
+demoCleanup.ups = [];
 demoCleanup.run = function () {
   while (demoCleanup.ups.length > 0) {
     demoCleanup.ups[0]();
@@ -88,7 +88,17 @@ function plotCallLog() {
   function y(d) { return d * 10; }
   function c(t) { return (t - start) * 720 / elapsed; }
 
+  function rect(start, end, depth) {
+    let rx = x(start);
+    let ry = y(depth);
+    ctx.fillStyle = "hsl(" + c(start) + ",80%,50%)";
+    ctx.fillRect(rx, ry, Math.ceil(x(end) - rx), y(depth + 1) - ry);
+  }
+
   let stack = [];
+
+  ctx.fillStyle = "rgb(255,255,255)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   if (1) {
     for (e of demo.log) {
@@ -96,9 +106,7 @@ function plotCallLog() {
         stack.push(e);
       } else {
         let call = stack.pop();
-        ctx.fillStyle = "hsl(" + c(call.time) + ",80%,50%)";
-        ctx.fillRect(x(call.time), y(0),
-                     Math.max(1,x(e.time - call.time)), y(stack.length + 1));
+        rect(call.time, e.time, stack.length);
       }
     }
   }
