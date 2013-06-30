@@ -335,10 +335,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.6369231"
-     inkscape:cx="325"
+     inkscape:cx="324.3891"
      inkscape:cy="200"
      inkscape:document-units="px"
-     inkscape:current-layer="svg10302"
+     inkscape:current-layer="alertLater"
      showgrid="false"
      showguides="true"
      inkscape:guide-bbox="true"
@@ -637,7 +637,7 @@
        class="nonvalue" />
     <rect
        transform="translate(0,-652.36218)"
-       style="fill:#83ff9a;fill-opacity:1;stroke:#ffffff;stroke-width:2.92859435;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline"
+       style="fill:#83ff9a;fill-opacity:1;stroke:#e6e4dd;stroke-width:2.92859435000000001;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline"
        id="rect3755-1-5-1-7"
        width="186.56091"
        height="18.674585"
@@ -720,7 +720,7 @@
          y="831.64917">[[Scope]]:</tspan></text>
     <path
        transform="translate(0,-652.36218)"
-       style="fill:none;stroke:#ffffff;stroke-width:2.95684338;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline"
+       style="fill:none;stroke:#e6e4dd;stroke-width:2.95684338000000002;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline"
        d="m 18.039736,817.89404 119.601824,0"
        id="path3773-4-3"
        inkscape:connector-curvature="0"
@@ -933,7 +933,7 @@
          x="266.10284"
          y="178.78937">[[Scope]]:</tspan></text>
     <path
-       style="fill:none;stroke:#ffffff;stroke-width:2.95684338;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline"
+       style="fill:none;stroke:#e6e4dd;stroke-width:2.95684338000000002;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline"
        d="m 185.84293,165.53187 119.60182,0"
        id="path3773-4-3-4"
        inkscape:connector-curvature="0"
