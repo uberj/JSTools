@@ -1,4 +1,4 @@
-var x = "global value of x";
+var x = "montpellier/debugme.js's global value of x";
 var f, g;
 
 function fibonacci(n) {
