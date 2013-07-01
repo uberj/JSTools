@@ -1,0 +1,15 @@
+* Sergio Maffeis 
+"Mechanized Metatheory to the Masses"
+
+try {"try"} finally {"finally"}
+
+LambdaJS at Brown
+
+* Bruno Dufour
+metacircular VM, for easy instrumentation of real code
+
+
+
+* Follow-up
+- LambdaJS, TeJaS
+- Truffle research VM

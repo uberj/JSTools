@@ -63,3 +63,637 @@ Before the rise of Google's Chrome web browser, the main reason for the populari
 
 
 
+* Protocol
+- first designed at Whistler in 2010
+- for mobile devices, remote debugging is requisite
+- a protocol also helps:
+  - inter-thread communication, like web workers
+  - chrome debugging
+- constraints:
+  - debugging data has a lot of detail, plenty of nesting
+  - we have many other tools (but I'll call them all "debuggee")
+  - we want to support newly invented tools
+  - things change
+  - avoid packet flooding
+
+- fundamentals:
+  - defined in terms of JSON packets 'twixt client and server
+    - always a JSON "object"
+  - assumes reliable bidirectional JSON link
+  - invent your favorite transport:
+    - socket + JSON.stringify + JSON.parse (+ a little framing)
+    - for intra-browser communication, just hand the darn object over
+      - deep-freeze
+      - next event tick
+    - IPDL structured clone, for talking to e10s child processes
+    - web workers?
+
+- actors:
+  - some server-side thingy that can receive and send packets
+  - name, some arbitrary string
+  - every server-bound packet has 'to' property: actor name
+  - every client-bound packet has 'from' property: actor name
+  - what an actor does with a packet is entirely up to its purpose
+    - custom protocol
+    - new tools
+    - loose coördination
+  - actors are independent; packets can be interleaved
+  - communication styles:
+    - request/reply
+    - request/reply/notify
+    - chaos
+
+- fix interesting numbers
+
+- show root actor slide
+
+- show conversation with JS debugger actor
+
+- actor lifetimes
+  - packets mention actors for objects, etc. freely
+  - client must be able to know actors' lifetimes
+  - could require client to explicitly release all actors ever mentioned by server
+  - better: actor hierarchy
+    - every actor has a parent
+    - when a parent actor is closed, all its children go away too
+    - hierarchy is strictly about lifetime, not meanings
+** Title page
+
+
+        The Mozilla Remote Debugging Protocol
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+** Root Actor
+
+- Root actor:
+  - greeting packet is "from" the root actor
+  - advertises services, and names actors representing those services
+  - answers "listTabs" request:
+    - for each tab, services available on that tab
+    - also lists globally available services
+
+- Things a root actor can introduce you to:
+  - ThreadActor      (per-tab): debug a tab's content JS
+  - chromeDebugger   (global): a JS debugging actor that targets browser chrome
+  - consoleActor     (per-tab): web console
+  - styleEditorActor (per-tab): style editor tool
+  - ProfilerActor    (global): ships BenWa's profiler data across the link
+  - WebappsActor     (global): b2g installation: "install", "getAll", "launch", "close", "uninstall"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+** Sample JS debugger protocol conversation
+
+ 0:01.88 TEST-INFO | profile dir is /tmp/firefox/xpcshellprofile
+ 0:01.89 TEST-INFO | /home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js | running test ...
+ 0:01.89 TEST-INFO | /home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js | full command: ['/home/jimb/moz/dbg/obj-bug/dist/bin/xpcshell', '-g', '/home/jimb/moz/dbg/obj-bug/dist/bin', '-a', '/home/jimb/moz/dbg/obj-bug/dist/bin', '-r', '/home/jimb/moz/dbg/obj-bug/dist/bin/components/httpd.manifest', '-m', '-n', '-s', '-e', 'const _HTTPD_JS_PATH = "/home/jimb/moz/dbg/obj-bug/dist/bin/components/httpd.js";', '-e', 'const _HEAD_JS_PATH = "/home/jimb/moz/dbg/testing/xpcshell/head.js";', '-e', 'const _TESTING_MODULES_DIR = "/home/jimb/moz/dbg/obj-bug/_tests/modules/";', '-f', '/home/jimb/moz/dbg/testing/xpcshell/head.js', '-p', '/home/jimb/moz/dbg/obj-bug/dist/plugins', '-e', 'const _SERVER_ADDR = "localhost"', '-e', u'const _HEAD_FILES = ["/home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/head_dbg.js"];', '-e', 'const _TAIL_FILES = [];', '-e', u'const _TEST_FILE = ["/home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js"];', '-e', '_execute_test(); quit(0);']
+ 0:01.89 TEST-INFO | /home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js | current directory: u'/home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit'
+ 0:01.89 TEST-INFO | /home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js | environment: ['LD_LIBRARY_PATH=/home/jimb/moz/dbg/obj-bug/dist/bin:/usr/local/lib', 'NS_TRACE_MALLOC_DISABLE_STACKS=1', 'XPCOM_MEM_LEAK_LOG=/tmp/firefox/xpcshellprofile/runxpcshelltests_leaks.log', 'XPCOM_DEBUG_BREAK=stack-and-abort', 'XPCSHELL_TEST_PROFILE_DIR=/tmp/firefox/xpcshellprofile', 'MOZ_CRASHREPORTER_NO_REPORT=1']
+ 0:09.18 TEST-PASS | /home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js | test passed (time: 7281.200ms)
+ 0:09.18 >>>>>>>
+ 0:09.18 ### XPCOM_MEM_LEAK_LOG defined -- logging leaks to /tmp/firefox/xpcshellprofile/runxpcshelltests_leaks.log
+ 0:09.18 
+ 0:09.18 TEST-INFO | (xpcshell/head.js) | test MAIN run_test pending (1)
+ 0:09.18 DBG-SERVER: Packet 0 sent from "root"
+ 0:09.18 
+ 0:09.18 TEST-INFO | (xpcshell/head.js) | test pending (2)
+ 0:09.18 
+ 0:09.18 TEST-INFO | (xpcshell/head.js) | test MAIN run_test finished (2)
+ 0:09.18 
+ 0:09.18 TEST-INFO | (xpcshell/head.js) | running event loop
+ 0:09.18 TEST-INFO | (xpcshell/head.js) | running event loop
+ 0:09.18 DBG-SERVER: Received packet 0: {
+ 0:09.18   "from": "root",
+ 0:09.18   "applicationType": "xpcshell-tests",
+ 0:09.18   "testConnectionPrefix": "conn0.",
+ 0:09.18   "traits": {
+ 0:09.18     "sources": true
+ 0:09.18   }
+ 0:09.18 }
+ 0:09.18 DBG-SERVER: Packet 1 sent to "root"
+ 0:09.18 DBG-SERVER: Received packet 1: {
+ 0:09.18   "to": "root",
+ 0:09.18   "type": "listTabs"
+ 0:09.18 }
+ 0:09.18 DBG-SERVER: Packet 2 sent from "root"
+ 0:09.18 DBG-SERVER: Received packet 2: {
+ 0:09.18   "from": "root",
+ 0:09.18   "selected": 0,
+ 0:09.18   "tabs": [
+ 0:09.18     {
+ 0:09.18       "actor": "conn0.TestTabActor2",
+ 0:09.18       "title": "test-stack"
+ 0:09.18     }
+ 0:09.18   ]
+ 0:09.18 }
+ 0:09.18 DBG-SERVER: Packet 3 sent to "conn0.TestTabActor2"
+ 0:09.18 DBG-SERVER: Received packet 3: {
+ 0:09.18   "to": "conn0.TestTabActor2",
+ 0:09.18   "type": "attach"
+ 0:09.18 }
+ 0:09.18 DBG-SERVER: Packet 4 sent from "conn0.TestTabActor2"
+ 0:09.18 DBG-SERVER: Received packet 4: {
+ 0:09.18   "type": "tabAttached",
+ 0:09.18   "threadActor": "conn0.context1",
+ 0:09.18   "from": "conn0.TestTabActor2"
+ 0:09.18 }
+ 0:09.18 DBG-SERVER: Packet 5 sent to "conn0.context1"
+ 0:09.18 DBG-SERVER: Received packet 5: {
+ 0:09.18   "to": "conn0.context1",
+ 0:09.18   "type": "attach",
+ 0:09.18   "options": {
+ 0:09.18     "useSourceMaps": true
+ 0:09.18   }
+ 0:09.18 }
+ 0:09.18 DBG-SERVER: Packet 6 sent from "conn0.context1"
+ 0:09.18 DBG-SERVER: Received packet 6: {
+ 0:09.18   "from": "conn0.context1",
+ 0:09.18   "type": "paused",
+ 0:09.18   "actor": "conn0.pause4",
+ 0:09.18   "poppedFrames": [],
+ 0:09.18   "why": {
+ 0:09.18     "type": "attached"
+ 0:09.18   }
+ 0:09.18 }
+ 0:09.18 DBG-SERVER: Packet 7 sent to "conn0.context1"
+ 0:09.18 DBG-SERVER: Received packet 7: {
+ 0:09.18   "to": "conn0.context1",
+ 0:09.18   "type": "resume",
+ 0:09.18   "resumeLimit": null,
+ 0:09.18   "pauseOnExceptions": false
+ 0:09.18 }
+ 0:09.18 DBG-SERVER: Packet 8 sent from "conn0.context1"
+ 0:09.18 DBG-SERVER: Received packet 8: {
+ 0:09.18   "from": "conn0.context1",
+ 0:09.18   "type": "resumed"
+ 0:09.18 }
+ 0:09.18 DBG-SERVER: Packet 9 sent from "conn0.context1"
+ 0:09.18 ------------------------------------------------------------------------
+ 0:09.18 Hit JavaScript "debugger" keyword. JS call stack...
+ 0:09.18 0 stopMe(aNumber = 42, aBool = true, aString = "nasu", aNull = null, aUndefined = undefined, aObject = [object Object], a = 1, b = true, c = [object Object], arguments = [object Arguments]) ["/home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js":67]
+ 0:09.18     aNumber = 42
+ 0:09.19     aBool = true
+ 0:09.19     aString = "nasu"
+ 0:09.19     aNull = null
+ 0:09.19     aUndefined = undefined
+ 0:09.19     aObject = [object Object]
+ 0:09.19     a = 1
+ 0:09.19     b = true
+ 0:09.19     c = [object Object]
+ 0:09.19     arguments = [object Arguments]
+ 0:09.19     this = [object Sandbox]
+ 0:09.19 1 anonymous(stopMe = [function], arguments = [object Arguments]) ["/home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js":69]
+ 0:09.19     stopMe = [function]
+ 0:09.19     arguments = [object Arguments]
+ 0:09.19     this = [object Sandbox]
+ 0:09.19 2 <TOP LEVEL> ["/home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js":62]
+ 0:09.19     this = [object Sandbox]
+ 0:09.19 3 test_pause_frame(arguments = [object Arguments]) ["/home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js":62]
+ 0:09.19     arguments = [object Arguments]
+ 0:09.19     this = [object BackstagePass @ 0x7f9789854040 (native @ 0x7f97898226a8)]
+ 0:09.19 4 anonymous() ["/home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js":20]
+ 0:09.19     this = [object BackstagePass @ 0x7f9789854040 (native @ 0x7f97898226a8)]
+ 0:09.19 5 anonymous() ["/home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/head_dbg.js":141]
+ 0:09.19     <failed to get 'this' value>
+ 0:09.19 6 anonymous() ["resource://gre/modules/devtools/dbg-client.jsm":289]
+ 0:09.19     this = [object Object]
+ 0:09.19 7 anonymous() ["resource://gre/modules/devtools/dbg-client.jsm":623]
+ 0:09.19     this = [object Object]
+ 0:09.19 8 resolve() ["resource://gre/modules/commonjs/sdk/core/promise.js":120]
+ 0:09.19     <failed to get 'this' value>
+ 0:09.19 9 then() ["resource://gre/modules/commonjs/sdk/core/promise.js":45]
+ 0:09.19     this = [object Object]
+ 0:09.19 10 then() ["resource://gre/modules/commonjs/sdk/core/promise.js":155]
+ 0:09.19  ------------------------------------------------------------------------
+ 0:09.19 DBG-SERVER: Packet 10 sent from "conn0.context1"
+ 0:09.19 DBG-SERVER: Received packet 9: {
+ 0:09.19   "from": "conn0.context1",
+ 0:09.19   "type": "newSource",
+ 0:09.19   "source": {
+ 0:09.19     "actor": "conn0.source5",
+ 0:09.19     "url": "/home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js"
+ 0:09.19   }
+ 0:09.19 }
+ 0:09.19 DBG-SERVER: Received packet 10: {
+ 0:09.19   "from": "conn0.context1",
+ 0:09.19   "type": "paused",
+ 0:09.19   "actor": "conn0.pause6",
+ 0:09.19   "frame": {
+ 0:09.19     "actor": "conn0.frame7",
+ 0:09.19     "type": "call",
+ 0:09.19     "callee": {
+ 0:09.19       "type": "object",
+ 0:09.19       "class": "Function",
+ 0:09.19       "actor": "conn0.obj8",
+ 0:09.19       "name": "stopMe"
+ 0:09.19     },
+ 0:09.19     "environment": {
+ 0:09.19       "actor": "conn0.environment9",
+ 0:09.19       "type": "function",
+ 0:09.19       "parent": {
+ 0:09.19         "actor": "conn0.environment10",
+ 0:09.19         "type": "function",
+ 0:09.19         "parent": {
+ 0:09.19           "actor": "conn0.environment11",
+ 0:09.19           "type": "object",
+ 0:09.19           "object": {
+ 0:09.19             "type": "object",
+ 0:09.19             "class": "Sandbox",
+ 0:09.19             "actor": "conn0.obj12"
+ 0:09.19           }
+ 0:09.19         },
+ 0:09.19         "function": {
+ 0:09.19           "type": "object",
+ 0:09.19           "class": "Function",
+ 0:09.19           "actor": "conn0.obj13"
+ 0:09.19         },
+ 0:09.19         "bindings": {
+ 0:09.19           "arguments": [],
+ 0:09.19           "variables": {
+ 0:09.19             "stopMe": {
+ 0:09.19               "enumerable": true,
+ 0:09.19               "configurable": false,
+ 0:09.19               "value": {
+ 0:09.19                 "type": "object",
+ 0:09.19                 "class": "Function",
+ 0:09.19                 "actor": "conn0.obj8",
+ 0:09.19                 "name": "stopMe"
+ 0:09.19               },
+ 0:09.19               "writable": true
+ 0:09.19             },
+ 0:09.19             "arguments": {
+ 0:09.19               "enumerable": true,
+ 0:09.19               "configurable": false,
+ 0:09.20               "value": {
+ 0:09.20                 "type": "object",
+ 0:09.20                 "class": "Arguments",
+ 0:09.20                 "actor": "conn0.obj14"
+ 0:09.20               },
+ 0:09.20               "writable": true
+ 0:09.20             }
+ 0:09.20           }
+ 0:09.20         }
+ 0:09.20       },
+ 0:09.20       "function": {
+ 0:09.20         "type": "object",
+ 0:09.20         "class": "Function",
+ 0:09.20         "actor": "conn0.obj8",
+ 0:09.20         "name": "stopMe"
+ 0:09.20       },
+ 0:09.20       "bindings": {
+ 0:09.20         "arguments": [
+ 0:09.20           {
+ 0:09.20             "aNumber": {
+ 0:09.20               "enumerable": true,
+ 0:09.20               "configurable": false,
+ 0:09.20               "value": 42,
+ 0:09.20               "writable": true
+ 0:09.20             }
+ 0:09.20           },
+ 0:09.20           {
+ 0:09.20             "aBool": {
+ 0:09.20               "enumerable": true,
+ 0:09.20               "configurable": false,
+ 0:09.20               "value": true,
+ 0:09.20               "writable": true
+ 0:09.20             }
+ 0:09.20           },
+ 0:09.20           {
+ 0:09.20             "aString": {
+ 0:09.20               "enumerable": true,
+ 0:09.20               "configurable": false,
+ 0:09.20               "value": "nasu",
+ 0:09.20               "writable": true
+ 0:09.20             }
+ 0:09.20           },
+ 0:09.20           {
+ 0:09.20             "aNull": {
+ 0:09.20               "enumerable": true,
+ 0:09.20               "configurable": false,
+ 0:09.20               "value": {
+ 0:09.20                 "type": "null"
+ 0:09.20               },
+ 0:09.20               "writable": true
+ 0:09.20             }
+ 0:09.20           },
+ 0:09.20           {
+ 0:09.20             "aUndefined": {
+ 0:09.20               "enumerable": true,
+ 0:09.20               "configurable": false,
+ 0:09.20               "value": {
+ 0:09.20                 "type": "undefined"
+ 0:09.20               },
+ 0:09.20               "writable": true
+ 0:09.20             }
+ 0:09.20           },
+ 0:09.20           {
+ 0:09.20             "aObject": {
+ 0:09.20               "enumerable": true,
+ 0:09.20               "configurable": false,
+ 0:09.20               "value": {
+ 0:09.20                 "type": "object",
+ 0:09.20                 "class": "Object",
+ 0:09.20                 "actor": "conn0.obj15"
+ 0:09.20               },
+ 0:09.20               "writable": true
+ 0:09.20             }
+ 0:09.20           }
+ 0:09.20         ],
+ 0:09.20         "variables": {
+ 0:09.20           "a": {
+ 0:09.20             "enumerable": true,
+ 0:09.20             "configurable": false,
+ 0:09.20             "value": 1,
+ 0:09.20             "writable": true
+ 0:09.20           },
+ 0:09.20           "b": {
+ 0:09.20             "enumerable": true,
+ 0:09.20             "configurable": false,
+ 0:09.20             "value": true,
+ 0:09.20             "writable": true
+ 0:09.20           },
+ 0:09.20           "c": {
+ 0:09.20             "enumerable": true,
+ 0:09.20             "configurable": false,
+ 0:09.20             "value": {
+ 0:09.20               "type": "object",
+ 0:09.21               "class": "Object",
+ 0:09.21               "actor": "conn0.obj16"
+ 0:09.21             },
+ 0:09.21             "writable": true
+ 0:09.21           },
+ 0:09.21           "arguments": {
+ 0:09.21             "enumerable": true,
+ 0:09.21             "configurable": false,
+ 0:09.21             "value": {
+ 0:09.21               "type": "object",
+ 0:09.21               "class": "Arguments",
+ 0:09.21               "actor": "conn0.obj17"
+ 0:09.21             },
+ 0:09.21             "writable": true
+ 0:09.21           }
+ 0:09.21         }
+ 0:09.21       }
+ 0:09.21     },
+ 0:09.21     "this": {
+ 0:09.21       "type": "object",
+ 0:09.21       "class": "Sandbox",
+ 0:09.38       "actor": "conn0.obj12"
+ 0:09.38     },
+ 0:09.38     "arguments": [
+ 0:09.38       42,
+ 0:09.38       true,
+ 0:09.38       "nasu",
+ 0:09.38       {
+ 0:09.38         "type": "null"
+ 0:09.38       },
+ 0:09.38       {
+ 0:09.38         "type": "undefined"
+ 0:09.38       },
+ 0:09.38       {
+ 0:09.38         "type": "object",
+ 0:09.38         "class": "Object",
+ 0:09.38         "actor": "conn0.obj15"
+ 0:09.38       }
+ 0:09.38     ],
+ 0:09.38     "where": {
+ 0:09.38       "url": "/home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js",
+ 0:09.38       "line": 67
+ 0:09.38     }
+ 0:09.38   },
+ 0:09.38   "poppedFrames": [],
+ 0:09.38   "why": {
+ 0:09.38     "type": "debuggerStatement"
+ 0:09.38   }
+ 0:09.38 }
+ 0:09.38 
+ 0:09.38 TEST-PASS | /home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js | [null : 33] 6 == 6
+ 0:09.38 
+ 0:09.38 TEST-PASS | /home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js | [null : 34] 42 == 42
+ 0:09.38 
+ 0:09.38 TEST-PASS | /home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js | [null : 35] true == true
+ 0:09.38 
+ 0:09.38 TEST-PASS | /home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js | [null : 36] nasu == nasu
+ 0:09.38 
+ 0:09.38 TEST-PASS | /home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js | [null : 37] null == null
+ 0:09.38 
+ 0:09.38 TEST-PASS | /home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js | [null : 38] undefined == undefined
+ 0:09.38 
+ 0:09.38 TEST-PASS | /home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js | [null : 39] object == object
+ 0:09.39 
+ 0:09.39 TEST-PASS | /home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js | [null : 40] Object == Object
+ 0:09.39 
+ 0:09.39 TEST-PASS | /home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js | [null : 41] true == true
+ 0:09.39 
+ 0:09.39 TEST-PASS | /home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js | [null : 43] 1 == 1
+ 0:09.39 
+ 0:09.39 TEST-PASS | /home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js | [null : 44] true == true
+ 0:09.39 
+ 0:09.39 TEST-PASS | /home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js | [null : 45] object == object
+ 0:09.39 
+ 0:09.39 TEST-PASS | /home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js | [null : 46] Object == Object
+ 0:09.39 
+ 0:09.39 TEST-PASS | /home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js | [null : 47] true == true
+ 0:09.39 DBG-SERVER: Packet 11 sent to "conn0.context1"
+ 0:09.39 DBG-SERVER: Received packet 11: {
+ 0:09.39   "to": "conn0.context1",
+ 0:09.39   "type": "resume",
+ 0:09.39   "resumeLimit": null,
+ 0:09.39   "pauseOnExceptions": false
+ 0:09.39 }
+ 0:09.39 DBG-SERVER: Packet 12 sent from "conn0.context1"
+ 0:09.39 DBG-SERVER: Received packet 12: {
+ 0:09.39   "from": "conn0.context1",
+ 0:09.39   "type": "resumed"
+ 0:09.39 }
+ 0:09.39 DBG-SERVER: Packet 13 sent to "conn0.context1"
+ 0:09.39 DBG-SERVER: Received packet 13: {
+ 0:09.39   "to": "conn0.context1",
+ 0:09.39   "type": "detach"
+ 0:09.39 }
+ 0:09.39 DBG-SERVER: in ThreadActor.prototype.disconnect
+ 0:09.39 DBG-SERVER: ThreadActor.prototype.onDetach: returning 'detached' packet
+ 0:09.39 DBG-SERVER: Packet 14 sent from "conn0.context1"
+ 0:09.39 DBG-SERVER: Received packet 14: {
+ 0:09.39   "type": "detached",
+ 0:09.39   "from": "conn0.context1"
+ 0:09.39 }
+ 0:09.39 DBG-SERVER: Packet 15 sent to "conn0.TestTabActor2"
+ 0:09.39 DBG-SERVER: Received packet 15: {
+ 0:09.39   "to": "conn0.TestTabActor2",
+ 0:09.39   "type": "detach"
+ 0:09.39 }
+ 0:09.39 DBG-SERVER: Packet 16 sent from "conn0.TestTabActor2"
+ 0:09.39 DBG-SERVER: Received packet 16: {
+ 0:09.39   "type": "detached",
+ 0:09.39   "from": "conn0.TestTabActor2"
+ 0:09.39 }
+ 0:09.39 
+
+** That 'paused' packet, cleaned up:
+
+{
+  "from": "conn0.context1", "type": "paused", "actor": "conn0.pause6",
+  "frame": {
+    "actor": "conn0.frame7", "type": "call",
+    "callee": { "type": "object", "class": "Function", "actor": "conn0.obj8", "name": "stopMe" },
+    "environment": {
+      "actor": "conn0.environment9", "type": "function",
+      "parent": {
+        "actor": "conn0.environment10", "type": "function",
+        "parent": {
+          "actor": "conn0.environment11", "type": "object",
+          "object": { "type": "object", "class": "Sandbox", "actor": "conn0.obj12" }
+        },
+        "function": { "type": "object", "class": "Function", "actor": "conn0.obj13" },
+        "bindings": {
+          "arguments": [],
+          "variables": {
+            "stopMe": {
+              "enumerable": true, "configurable": false,
+              "value": { "type": "object", "class": "Function", "actor": "conn0.obj8", "name": "stopMe" },
+              "writable": true
+            },
+            "arguments": {
+              "enumerable": true, "configurable": false,
+              "value": { "type": "object", "class": "Arguments", "actor": "conn0.obj14" },
+              "writable": true
+            }
+          }
+        }
+      },
+      "function": { "type": "object", "class": "Function", "actor": "conn0.obj8", "name": "stopMe" },
+      "bindings": {
+        "arguments": [
+          { "aNumber":    { "enumerable": true, "configurable": false, "value": 42,                 "writable": true } },
+          { "aBool":      { "enumerable": true, "configurable": false, "value": true,               "writable": true } },
+          { "aString":    { "enumerable": true, "configurable": false, "value": "nasu",             "writable": true } },
+          { "aNull":      { "enumerable": true, "configurable": false, "value": { "type": "null" }, "writable": true } },
+          { "aUndefined": { "enumerable": true, "configurable": false, "value": { "type": "undefined" }, "writable": true } },
+          { "aObject":    { "enumerable": true, "configurable": false,
+                            "value": { "type": "object", "class": "Object", "actor": "conn0.obj15" },
+                            "writable": true } }
+        ],
+        "variables": {
+          "a":         { "enumerable": true, "configurable": false, "value": 1, "writable": true },
+          "b":         { "enumerable": true, "configurable": false, "value": true, "writable": true },
+          "c":         { "enumerable": true, "configurable": false,
+                         "value": { "type": "object", "class": "Object", "actor": "conn0.obj16" },
+                         "writable": true },
+          "arguments": { "enumerable": true, "configurable": false,
+                         "value": { "type": "object", "class": "Arguments", "actor": "conn0.obj17" },
+                         "writable": true }
+        }
+      }
+    },
+    "this": { "type": "object", "class": "Sandbox", "actor": "conn0.obj12" },
+    "arguments": [ 42, true, "nasu", { "type": "null" }, { "type": "undefined" },
+                   { "type": "object", "class": "Object", "actor": "conn0.obj15" } ],
+    "where": {
+      "url": "/home/jimb/moz/dbg/obj-bug/_tests/xpcshell/toolkit/devtools/debugger/tests/unit/test_framebindings-01.js",
+      "line": 67
+    }
+  },
+  "poppedFrames": [],
+  "why": {
+    "type": "debuggerStatement"
+  }
+}
+
+** Links:
+
+- Protocol spec, on one gigantic page:
+  https://wiki.mozilla.org/Remote_Debugging_Protocol
+
+- Socket/pipe/byte stream transport:
+  https://wiki.mozilla.org/Remote_Debugging_Protocol_Stream_Transport
+
+- wiki markup, checked into github for tentative or proposed changes:
+  https://github.com/jimblandy/DebuggerDocs
+  many branches
+  GitHub does a bad job presenting long lines
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
