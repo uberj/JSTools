@@ -1,0 +1,52 @@
+Here's a proposed abstract for a paper to be presented at JSTools 2013.
+
+Title: Firefox's JavaScript Debugging Architecture
+
+SpiderMonkey, the JavaScript implementation used in Mozilla's Firefox web
+browser, provides an interface for inspecting and modifying the state of
+running JavaScript programs. This interface is named, simply, "Debugger".
+Firefox's integrated JavaScript debugging tools, including the stepping
+debugger and the web console, all use Debugger to interact with the
+developer's JavaScript code. (Firebug, the popular third-party add-on for
+web development, is being ported to Debugger.)
+
+Debugger presents abstractions that correspond closely to the concepts the
+ECMAScript language specification uses, making it practical to write tools
+that assume only that the semantics of JavaScript have been faithfully
+executed, without regard for the underlying implementation techniques.
+Indeed, since Debugger was first implemented, SpiderMonkey has acquired two
+new just-in-time compilers (IonMonkey and the Baseline compiler) and has
+lost two more (TraceMonkey and JaegerMonkey); Debugger's unit tests passed
+throughout this period of active evolution. In some cases, Debugger makes
+special effort to present the execution of the compiled code as if the
+source program were executing; or, the compiler may rein in optimizations
+on programs that Debugger is observing, to preserve information Debugger
+may need to expose. When all else fails, Debugger confesses to its client
+that it is unable to recover the information requested.
+
+Debugger operates on only one thread of execution at a time, and must share
+a memory space, thread, and call stack with its debuggee. However, the
+Mozilla tools must debug web workers, which run in a separate thread; the
+JavaScript code used to implement Firefox itself, which runs in a separate
+Firefox process; and Firefox OS applications, which run on a separate
+device.
+
+In these cases, Firefox uses a remote debugging protocol to communicate
+between the debugger's user interface and the debuggee. The server shares a
+memory space, thread, and stack with the debuggee, and uses Debugger to
+interact with the debuggee on behalf of the user interface. Each protocol
+packet is directed to or comes from a particular "actor" on the server,
+representing a browser tab, a specific web page, a stack frame, or even an
+individual JavaScript object. Each actor is independent, so a single
+protocol connection can carry any number of interleaved interactions with
+different actors. For consistency of implementation, Firefox's built-in
+developer tools also use the protocol in the local case, to debug
+JavaScript in ordinary web pages.
+
+Because protocol packets are directed specific actors, each type of actor
+can choose a pattern of communication appropriate to its needs, without
+affecting other actors. Indeed, Mozilla has extended the protocol to
+collect profiling data, extend the web console and command line to remote
+devices, automate browser testing, and even install Firefox OS apps. All
+these activities can transparently share a connection with ordinary
+JavaScript debugging activities.
