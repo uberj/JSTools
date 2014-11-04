@@ -33,7 +33,7 @@ window.flip = {};
         clean(svgDoc);
 
         if (flipClassAttr)
-          flipClass(svgDoc, flipClassAttr);
+          flipClass(svgDoc, flipClassAttr.split(" "));
 
         if (flipIdsAttr)
           flipIds(svgDoc, new Set(flipIdsAttr.split(/[, ]/)));
@@ -48,12 +48,14 @@ window.flip = {};
 
   // In svgDoc, display elements with the 'flip' class only if they also
   // have showClass.
-  function flipClass(svgDoc, showClass) {
-    for (let elt of iter(svgDoc.getElementsByClassName('flip'))) {
-      if (elt.classList.contains(showClass))
-        elt.setAttribute('style', 'display:inline');
-      else
-        elt.setAttribute('style', 'display:none');
+  function flipClass(svgDoc, showClasses) {
+    for (let elt of iter(svgDoc.querySelectorAll("[id^=layer]"))) {
+      elt.setAttribute('style', 'display:none');
+      eltClasses = elt.getAttribute('inkscape:label').split(" ")
+      for (let sc in iter(showClasses)) {
+        if (eltClasses.indexOf(sc) != -1)
+          elt.setAttribute('style', 'display:inline');
+      }
     }
   }
 
